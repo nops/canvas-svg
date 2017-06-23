@@ -137,12 +137,18 @@ CanvasSVG.Base.prototype = {
     },
     
     addText:    function (type, cur, prm, trans) {
+        let textAnchor = 'start';
+        if (cur.textAlign === 'center') {
+          textAnchor = 'middle';
+        } else if (cur.textAlign === 'right') {
+          textAnchor = 'end';
+        }
         // XXX we don't support prm[3] maxWidth
         var attr = {
             x:                      prm[1],
             y:                      prm[2],
             style:                  "font: " + cur.font, // there isn't a font attribute
-            'text-align':           cur.textAlign,
+            'text-anchor':          textAnchor,
             'alignment-baseline':   cur.textBaseline,
         };
         this.processCommon(type, attr, cur, trans);
@@ -393,10 +399,10 @@ CanvasSVG.Base.prototype = {
                 // XXX
                 break;
             case 'fillText':
-                this.addText('fill', this.cur, this.prm, this.trans);
+                this.addText('fill', this.cur, prm, this.trans);
                 break;
             case 'strokeText':
-                this.addText('stroke', this.cur, this.prm, this.trans);
+                this.addText('stroke', this.cur, prm, this.trans);
                 break;
             case 'drawImage':
                 // XXX
