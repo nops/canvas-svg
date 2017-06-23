@@ -421,7 +421,7 @@ CanvasSVG.Base.prototype = {
                 // noops
                 break;
             default:
-                alert("Unknown command: " + cmd);
+                console.error('Unknown command:', cmd);
         };
     },
     
