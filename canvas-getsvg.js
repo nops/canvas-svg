@@ -137,7 +137,7 @@ CanvasSVG.Base.prototype = {
     },
     
     addText:    function (type, cur, prm, trans) {
-        let textAnchor = 'start';
+        var textAnchor = 'start';
         if (cur.textAlign === 'center') {
           textAnchor = 'middle';
         } else if (cur.textAlign === 'right') {
