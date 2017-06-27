@@ -427,12 +427,19 @@ CanvasSVG.Base.prototype = {
     
     // this is very heavily "inspired" by explorercanvas, thanks!
     pushArcAsA: function (x, y, rad, sAng, eAng, ckw) {
-        var delta = Math.abs(sAng - eAng);
         if (sAng == eAng) return;
+
+        sAng %= Math.PI * 2;
+        eAng %= Math.PI * 2;
+        var delta = eAng - sAng;
+        if (delta < 0) {
+            delta += Math.PI * 2;
+        }
+
         var endX = x + rad * Math.cos(eAng);
         var endY = y + rad * Math.sin(eAng);
         
-        if (delta >= 2 * Math.PI) {
+        if (sAng === eAng) {
             this.pushArcAsA(x, y, rad, sAng, sAng + Math.PI, ckw);
             this.pushArcAsA(x, y, rad, sAng + Math.PI, sAng + 2*Math.PI, ckw);
             this.path.push(['M', endX, endY]);
