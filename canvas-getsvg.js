@@ -429,6 +429,12 @@ CanvasSVG.Base.prototype = {
     pushArcAsA: function (x, y, rad, sAng, eAng, ckw) {
         if (sAng == eAng) return;
 
+        while (sAng < 0) {
+          sAng += Math.PI * 2;
+        }
+        while (eAng < 0) {
+          eAng += Math.PI * 2;
+        }
         sAng %= Math.PI * 2;
         eAng %= Math.PI * 2;
         var delta = eAng - sAng;

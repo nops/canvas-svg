@@ -191,8 +191,7 @@ var canvasTests = [
             context.save();
             context.fillStyle = 'red';
             context.beginPath();
-            context.arc(x/zoom, y/zoom, r/zoom, 0, Math.PI*2, true);
-            context.scale(zoom, zoom);
+            context.arc(x/zoom, y/zoom, r/zoom, Math.PI*3/2, -Math.PI/2, true);
             context.fill();
             context.restore();
 
@@ -200,7 +199,7 @@ var canvasTests = [
             context.fillStyle = 'green';
             context.beginPath();
             context.scale(zoom, zoom);
-            context.arc(x/zoom, y/zoom, r/zoom, 0, Math.PI*2, true);
+            context.arc(x/zoom, y/zoom, r/zoom, -Math.PI/2, Math.PI*3/2, true);
             context.fill();
             context.restore();
         }
